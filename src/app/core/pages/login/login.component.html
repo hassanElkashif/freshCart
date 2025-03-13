@@ -1,0 +1,71 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="max-w-md mx-auto">
+    @if (apiError ) {
+
+    <div class="flex p-4 mt-1 mb-8 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert">
+
+        <p>{{ apiError }}</p>
+    </div>
+    }
+
+
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="email" formControlName="email" name="floating_email" id="floating_email" class="input-style peer"
+            placeholder=" " required />
+        <label for="floating_email"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            Email</label>
+
+        @if (loginForm.get("email")?.errors && loginForm.get("email")?.touched) {
+
+        <div class="flex p-4 mt-1 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (loginForm.get("email")?.getError("required")) {
+                <li>Email is required</li>
+                } @else if (loginForm.get("email")?.getError("email")) {
+
+                <li>Invaild Email</li>
+                }
+            </ul>
+        </div>
+        }
+
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input [type]="!toggleInput ?  'password' : 'text'" formControlName="password" name="floating_password"
+            id="floating_password" class="input-style peer" placeholder=" " required />
+        <label for="floating_password"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            Password</label>
+        <span (click)="togglePassword()" class="absolute right-0 top-[30%] cursor-pointer"><i
+                class="fa fa-eye"></i></span>
+
+
+        @if (loginForm.get("password")?.errors && loginForm.get("password")?.touched) {
+
+        <div class="flex p-4 mt-1 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+
+            <ul class="mt-1.5 list-disc list-inside">
+                @if (loginForm.get("password")?.getError("required")) {
+                <li>Password is required</li>
+                } @else if (loginForm.get("password")?.getError("pattern")) {
+
+                <li>Invaild pattern</li>
+                }
+            </ul>
+        </div>
+        }
+    </div>
+
+    <button type="submit" [disabled]="isCallingApi"
+        class="text-white bg-main opacity-80 hover:opacity-100 hover:bg-main focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">
+        @if (isCallingApi) {
+        <i class="fa fa-spin fa-spinner"></i>
+        } @else {
+        Login
+        }
+    </button>
+</form>

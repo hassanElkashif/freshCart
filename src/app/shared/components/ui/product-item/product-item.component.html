@@ -1,0 +1,15 @@
+<div class="product mb-4 group">
+  <a [routerLink]="['/productDetails',product._id]" >
+
+    <img [src]="product.imageCover" alt="">
+    <span class="text-main">{{product.category.name}}</span>
+    <h2>{{product.title.split(" ").splice(0,2).join(" ")}}</h2>
+    <div class="flex justify-between">
+      <p>{{product.price}}</p>
+      <p><i class="fa fa-star text-[#ffc908]"></i> {{product.ratingsAverage}}</p>
+    </div>
+  </a>
+  <button 
+  (click)="handleAddToCart(product._id)"
+  class="bg-main mt-5 group-hover:translate-y-[0%] group-hover:opacity-100 transition-all duration-300 translate-y-[100%] text-white p-2 rounded-md w-[90%] mx-auto block opacity-0" > Add to Cart</button>
+</div>
