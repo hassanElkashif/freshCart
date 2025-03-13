@@ -2,13 +2,13 @@
     <h1 class="text-5xl">Loading .....</h1>
 }@else {
 
-    @if (cartDetails?.numOfCartItems != 0 && !emptyCart) {
+    @if (cartDetails.numOfCartItems != 0 && !emptyCart) {
 
     <section class="cart">
         <div class="cart__header mb-7 flex justify-between items-center">
             <h2 class="text-3xl font-semibold">Total cart items : {{cartDetails.numOfCartItems}}</h2>
             <div class="flex items-center">
-                <p class="text-3xl font-semibold me-4"> Total cart price : ${{cartDetails.data?.totalCartPrice}}</p>
+                <p class="text-3xl font-semibold me-4"> Total cart price : ${{cartDetails.data.totalCartPrice}}</p>
                 <button (click)="clearCart()" class="bg-red-500 text-white p-2 rounded-md">Clear</button>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (product of cartDetails?.data?.products; track $index) {
+                    @for (product of cartDetails.data.products; track $index) {
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="p-4">
                                 <img [src]="product.product.imageCover" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
