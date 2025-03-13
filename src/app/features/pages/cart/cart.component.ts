@@ -5,6 +5,10 @@ import { RouterLink } from '@angular/router';
 
 export const renderMode = 'server';
 
+export function getPrerenderParams() {
+  return [];
+}
+
 @Component({
   selector: 'app-cart',
   imports: [RouterLink],
