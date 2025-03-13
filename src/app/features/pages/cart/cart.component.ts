@@ -3,6 +3,8 @@ import { CartService } from '../../../shared/services/cart/cart.service';
 import { cart } from '../../../shared/interfaces/cart';
 import { RouterLink } from '@angular/router';
 
+export const renderMode = 'server';
+
 @Component({
   selector: 'app-cart',
   imports: [RouterLink],
