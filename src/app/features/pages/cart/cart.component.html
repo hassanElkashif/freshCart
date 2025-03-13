@@ -3,19 +3,17 @@
 }@else {
 
     @if (cartDetails?.numOfCartItems != 0 && !emptyCart) {
-    
-        <section class="cart">
-            <div class="cart__header mb-7 flex justify-between items-center">
-                <h2 class="text-3xl font-semibold">Total cart items : {{cartDetails.numOfCartItems}}</h2>
-                <div class="flex items-center">
-                    <p class="text-3xl font-semibold me-4"> Total cart price : ${{cartDetails.data?.totalCartPrice}}</p>
-                    <button (click)="clearCart()" class="bg-red-500 text-white p-2 rounded-md">Clear</button>
-                </div>
-        
+
+    <section class="cart">
+        <div class="cart__header mb-7 flex justify-between items-center">
+            <h2 class="text-3xl font-semibold">Total cart items : {{cartDetails.numOfCartItems}}</h2>
+            <div class="flex items-center">
+                <p class="text-3xl font-semibold me-4"> Total cart price : ${{cartDetails.data?.totalCartPrice}}</p>
+                <button (click)="clearCart()" class="bg-red-500 text-white p-2 rounded-md">Clear</button>
             </div>
-        
-        
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        </div>
+    
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -75,14 +73,13 @@
                     }
                 </tbody>
             </table>
-        </div>
-
-        <div class="cart__actions">
-            <a [routerLink]="['/checkout', cartDetails.cartId]" class="bg-main rounded-md p-4 text-white inline-block my-6"> Continue </a>
-        </div>
-        </section>
+    </div>
+    
+    <div class="cart__actions">
+        <a [routerLink]="['/checkout', cartDetails.cartId]" class="bg-main rounded-md p-4 text-white inline-block my-6"> Continue </a>
+    </div>
+    </section>
     } @else {
         <h1 class="text-5xl">No cart items .... start shopping now</h1>
-
     }
 }

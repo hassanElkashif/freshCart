@@ -4,6 +4,7 @@ import { product } from '../../../../../shared/interfaces/product';
 import { ProductItemComponent } from "../../../../../shared/components/ui/product-item/product-item.component";
 import { CartService } from '../../../../../shared/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishListService } from '../../../../../shared/services/wishList/wish-list.service';
 
 @Component({
   selector: 'app-recent-products',
@@ -14,12 +15,12 @@ import { ToastrService } from 'ngx-toastr';
 export class RecentProductsComponent implements OnInit {
 
   products!:product[]
+  wishlistIds: string[] = [];
 
   private readonly _provideService = inject(ProductService)
   private readonly _cartService = inject(CartService)
+  private readonly _wishListService = inject(WishListService)
   private readonly _toastr  = inject(ToastrService)
-
-  product!: product[];
 
   ngOnInit(): void {
     this.gerProducts()
@@ -48,5 +49,21 @@ export class RecentProductsComponent implements OnInit {
       }
     })
   }
+
+  addToWishList(id: string) {
+    console.log('addToWishList() called with ID:', id);
+  
+    this._wishListService.addProductToWishList(id).subscribe({
+      next: (res) => {
+        console.log('API Response:', res);
+        this.wishlistIds.push(id);
+        this._toastr.success(res.message);
+      },
+      error: (err) => {
+        console.error('Error adding to wishlist:', err);
+      }
+    });
+  }
+  
 
 }

@@ -17,8 +17,8 @@ export class CheckoutComponent {
   checkoutForm!: FormGroup
 
   ngOnInit() {
-    this.getCartId
-    this.initForm
+    this.getCartId()
+    this.initForm()
   }
 
   getCartId() {
@@ -37,7 +37,11 @@ export class CheckoutComponent {
     //   next: (res) => console.log(res),
     // })
     this._orderService.onlinePayment(this.cartId,this.checkoutForm.value).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+
+        console.log(res.session.url);
+        open(res.session.url)
+      }
     })
   }
 }

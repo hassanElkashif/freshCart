@@ -14,7 +14,9 @@ export const routes: Routes = [
   {path:"products",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/products/products.component').then(c => c.ProductsComponent)},
   {path:"categories",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/categories/categories.component').then(c => c.CategoriesComponent)},
   {path:"cart",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/cart/cart.component').then(c => c.CartComponent)},
+  {path:"whishList",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/whish-list/whish-list.component').then(c => c.WishListComponent)},
   {path:"checkout/:cartId",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/checkout/checkout.component').then(c => c.CheckoutComponent)},
   {path:"productDetails/:id",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/product-details/product-details.component').then(c => c.ProductDetailsComponent)},
+  {path:"allorders",canActivate:[authGuard] ,loadComponent: () => import('./features/pages/orders/orders.component').then(c => c.OrdersComponent)},
   {path:"**",canActivate:[authGuard] ,loadComponent: () => import('./core/pages/not-found/not-found.component').then(c => c.NotFoundComponent)},
 ];
