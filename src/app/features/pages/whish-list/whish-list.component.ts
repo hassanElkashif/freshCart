@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './whish-list.component.html',
   styleUrls: ['./whish-list.component.scss']
 })

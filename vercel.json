@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/server/main.js", "use": "@vercel/node" }
+    { "src": "dist/fresh-cart/server/main.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "dist/server/main.js" }
+    { "src": "/(.*)", "dest": "dist/fresh-cart/server/main.js" }
   ]
 }

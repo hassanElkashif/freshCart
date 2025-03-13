@@ -15,16 +15,14 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * Disable prerendering for dynamic routes like checkout/:cartId
  */
+export function getPrerenderParams(route: string) {
+  if (route.startsWith('/checkout/')) {
+    return null; // ❌ Skip prerendering
+  }
+  return undefined;
+}
 
 /**
  * Serve static files from /browser
